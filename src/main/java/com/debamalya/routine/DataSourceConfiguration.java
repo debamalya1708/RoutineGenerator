@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 //import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 //import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
@@ -16,7 +18,8 @@ import javax.sql.DataSource;
  * The Class DataSourceConfiguration.
  */
 @Configuration
-public class DataSourceConfiguration {
+@EnableWebMvc
+public class DataSourceConfiguration extends WebMvcConfigurerAdapter {
 
     /** The data source. */
 //	@Autowired
@@ -32,16 +35,20 @@ public class DataSourceConfiguration {
 //	   System.out.println("named paramter");
 //        return new NamedParameterJdbcTemplate(dataSource);
 //    }
-
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/home/newRoutine").allowedOrigins("https://routinev1.herokuapp.com");
-            }
-        };
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**");
     }
+
+//    @Bean
+//    public WebMvcConfigurer corsConfigurer() {
+//        return new WebMvcConfigurer() {
+//            @Override
+//            public void addCorsMappings(CorsRegistry registry) {
+//                registry.addMapping("/home/newRoutine").allowedOrigins("https://routinev1.herokuapp.com");
+//            }
+//        };
+//    }
 
 }
 
