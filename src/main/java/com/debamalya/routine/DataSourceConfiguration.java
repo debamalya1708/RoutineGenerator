@@ -63,18 +63,18 @@ public class DataSourceConfiguration extends WebSecurityConfigurerAdapter {
 //	   System.out.println("named paramter");
 //        return new NamedParameterJdbcTemplate(dataSource);
 //    }
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurerAdapter() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins("*")
-                        .allowedHeaders("*")
-                        .allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");
-            }
-        };
-    }
+//    @Bean
+//    public WebMvcConfigurer corsConfigurer() {
+//        return new WebMvcConfigurerAdapter() {
+//            @Override
+//            public void addCorsMappings(CorsRegistry registry) {
+//                registry.addMapping("/**")
+//                        .allowedOrigins("*")
+//                        .allowedHeaders("*")
+//                        .allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");
+//            }
+//        };
+//    }
 
 }
 
