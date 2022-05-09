@@ -3,6 +3,8 @@ package com.debamalya.routine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -18,7 +20,7 @@ import javax.sql.DataSource;
  * The Class DataSourceConfiguration.
  */
 @Configuration
-public class DataSourceConfiguration {
+public class DataSourceConfiguration extends WebSecurityConfigurerAdapter {
 
     /** The data source. */
 //	@Autowired
@@ -29,6 +31,13 @@ public class DataSourceConfiguration {
      *
      * @return the named parameter jdbc template
      */
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable()
+                .authorizeRequests()
+                .anyRequest().permitAll()
+                .and().httpBasic();
+    }
 //   @Bean
 //    public NamedParameterJdbcTemplate primaryJdbcTemplate() {
 //	   System.out.println("named paramter");
@@ -41,6 +50,7 @@ public class DataSourceConfiguration {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedOrigins("*")
+                        .allowedHeaders("*")
                         .allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");
             }
         };
