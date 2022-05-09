@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+@CrossOrigin(origins = "https://koderbyte.com/routinue-generator")
 @RestController
 @RequiredArgsConstructor
 @Slf4j
@@ -24,7 +25,7 @@ public class HomeController {
     RoutineGenerate routineGenerate;
 
 
-    @CrossOrigin(origins = "https://routinev1.herokuapp.com")
+//    @CrossOrigin(origins = "https://koderbyte.com/routinue-generator")
     @PostMapping(value = "/newRoutine", consumes= MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<ArrayList<ArrayList<ArrayList<Period>>>> generateRoutine(@RequestBody Routine routine) {
         System.out.println("getting the routine");
