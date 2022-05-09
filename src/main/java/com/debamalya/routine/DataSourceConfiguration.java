@@ -18,8 +18,7 @@ import javax.sql.DataSource;
  * The Class DataSourceConfiguration.
  */
 @Configuration
-@EnableWebMvc
-public class DataSourceConfiguration extends WebMvcConfigurerAdapter {
+public class DataSourceConfiguration {
 
     /** The data source. */
 //	@Autowired
@@ -35,20 +34,16 @@ public class DataSourceConfiguration extends WebMvcConfigurerAdapter {
 //	   System.out.println("named paramter");
 //        return new NamedParameterJdbcTemplate(dataSource);
 //    }
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**");
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurerAdapter() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");
+            }
+        };
     }
-
-//    @Bean
-//    public WebMvcConfigurer corsConfigurer() {
-//        return new WebMvcConfigurer() {
-//            @Override
-//            public void addCorsMappings(CorsRegistry registry) {
-//                registry.addMapping("/home/newRoutine").allowedOrigins("https://routinev1.herokuapp.com");
-//            }
-//        };
-//    }
 
 }
 
