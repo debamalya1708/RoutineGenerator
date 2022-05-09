@@ -38,7 +38,7 @@ public class DataSourceConfiguration {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/home/newRoutine").allowedOrigins("https://routinev1.herokuapp.com");
+                registry.addMapping("/home/newRoutine").allowedOrigins("http://127.0.0.1:5500/");
             }
         };
     }
