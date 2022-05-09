@@ -98,6 +98,7 @@ public class RoutineGenerate {
         }
             System.out.println("after clearing slotWiseFaculty "+slotWiseFaculty);
         Collections.shuffle(subjectList);
+            System.out.println("subjectList after shuffle"+subjectList);
         }
 //        weeklyRoutine.add(dayByDayRoutineList);
         System.out.println("dayByDayRoutineList "+dayByDayRoutineList);
