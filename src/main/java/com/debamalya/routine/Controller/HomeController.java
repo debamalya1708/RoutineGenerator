@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-@CrossOrigin(origins = "https://koderbyte.com")
+@CrossOrigin(origins = "https://routinev1.herokuapp.com")
 @RestController
 @RequiredArgsConstructor
 @Slf4j
