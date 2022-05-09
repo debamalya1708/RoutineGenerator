@@ -17,8 +17,8 @@ import javax.sql.DataSource;
 public class DataSourceConfiguration {
 
     /** The data source. */
-//	@Autowired
-//    private DataSource dataSource;
+	@Autowired
+    private DataSource dataSource;
 
     /**
      * Primary jdbc template.
